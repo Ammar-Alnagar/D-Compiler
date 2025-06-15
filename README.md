@@ -1,6 +1,6 @@
 # D-Compiler 🚀
 
-![Compiler Pipeline](https://via.placeholder.com/800x400.png?text=D-Compiler+Architecture)
+![Compiler Pipeline]([https://via.placeholder.com/800x400.png?text=D-Compiler+Architecture](https://www.geeksforgeeks.org/introduction-of-compiler-design/))
 
 ## 🚦 Project Status
 | Component          | Status      | Features Implemented |
