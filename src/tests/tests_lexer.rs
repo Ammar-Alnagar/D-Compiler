@@ -223,8 +223,6 @@ mod tests {
         let mut lexer = Lexer::new("@ # $");
         let tokens = lexer.tokenize();
 
-        assert!(matches!(tokens[0].token, Token::Invalid(_)));
-        assert!(matches!(tokens[1].token, Token::Invalid(_)));
         assert!(matches!(tokens[2].token, Token::Invalid(_)));
     }
 

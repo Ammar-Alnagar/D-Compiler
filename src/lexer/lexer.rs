@@ -103,6 +103,9 @@ impl Lexer {
                 if self.peek() == '/' {
                     self.advance();
                     Token::Punctuation(Punctuation::Comment)
+                } else if (self.peek() == '*') {
+                    self.advance();
+                    Token::Punctuation(Punctuation::CommentBlkStr)
                 } else {
                     Token::Operation(Operation::Divide)
                 }
@@ -120,6 +123,8 @@ impl Lexer {
             '.' => Token::Punctuation(Punctuation::Dot),
             ':' => Token::Punctuation(Punctuation::Colon),
             '?' => Token::Punctuation(Punctuation::QuestionMark),
+            '#' => Token::Punctuation(Punctuation::Hashtag),
+            '@' => Token::Punctuation(Punctuation::At),
 
             // String literals
             '"' | '\'' => self.string(ch),

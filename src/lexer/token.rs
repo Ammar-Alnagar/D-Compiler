@@ -1,18 +1,22 @@
 #[allow(dead_code, unused_variables)]
 #[derive(Debug, Clone, PartialEq)]
 pub enum Punctuation {
-    OpenParen = 0,     // (
-    CloseParen = 1,    // )
-    OpenBrace = 2,     // {
-    CloseBrace = 3,    // }
-    OpenBracket = 4,   // [
-    CloseBracket = 5,  // ]
-    Comma = 6,         // ,
-    Semicolon = 7,     // ;
-    Dot = 8,           // .
-    Colon = 9,         // :
-    QuestionMark = 10, // ?
-    Comment = 11,      // //
+    OpenParen = 0,      // (
+    CloseParen = 1,     // )
+    OpenBrace = 2,      // {
+    CloseBrace = 3,     // }
+    OpenBracket = 4,    // [
+    CloseBracket = 5,   // ]
+    Comma = 6,          // ,
+    Semicolon = 7,      // ;
+    Dot = 8,            // .
+    Colon = 9,          // :
+    QuestionMark = 10,  // ?
+    Comment = 11,       // //
+    Hashtag = 12,       // #
+    CommentBlkStr = 13, // /*
+    CommentBlkEnd = 14, // *\
+    At = 15,            // @
 }
 
 #[derive(Debug, Clone, PartialEq)]
