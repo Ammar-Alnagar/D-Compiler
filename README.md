@@ -1,77 +1,109 @@
-# D-Compiler
 
-A simple compiler project written in Rust, focusing on building compiler components from the ground up.
+# D-Compiler 🚀
 
-## Project Status
+A Rust-based compiler for a C-like language, implemented from scratch. This project follows a multi-phase compilation process, starting with lexical analysis and progressing to parsing, semantic analysis, and code generation.
 
-This project is currently in the early stages of development. The primary focus so far has been on implementing a lexical analyzer (lexer) for a C-like language.
+## Project Status 📌
 
-## Features
+| Stage       | Status      | Description                                  |
+|-------------|-------------|----------------------------------------------|
+| Lexer       | ✅ Complete | Fully functional with extensive test coverage. |
+| Parser      | ⏳ Planned  | Next major milestone.                        |
+| Semantic    | ❌ Pending  | Type checking, scope resolution, etc.        |
+| Codegen     | ❌ Pending  | Target: LLVM IR or direct machine code.      |
 
-- **Lexical Analysis:** A hand-written lexer capable of recognizing:
-    - Identifiers
-    - Numbers (integers and floating-point)
-    - Strings (with basic escape sequences)
-    - Reserved keywords
-    - Operators (arithmetic, comparison, assignment, logical)
-    - Punctuation
-    - Comments (single-line `//` and multi-line `/* ... */`)
-    - Handles whitespace and newlines.
+## Features 🌟
 
-## Technologies Used
+### Implemented (Lexer)
+| Feature               | Example            | Notes                              |
+|-----------------------|--------------------|------------------------------------|
+| Identifiers           | `variable_name`    | Supports underscores and alphanums.|
+| Numbers               | `42`, `3.14`       | Integers and floats.               |
+| Strings               | `"hello\nworld"`   | Escape sequences (`\n`, `\t`).     |
+| Operators             | `+`, `==`, `!=`    | Multi-character support.           |
+| Comments              | `// line`, `/* */` | Single-line and multi-line.        |
+| Punctuation           | `( ) { } [ ] ; :`  | Full punctuation support.          |
 
-- **Rust:** The primary programming language for the compiler implementation.
-- **Cargo:** Rust's package manager and build system.
-- **Regex crate:** Used for regular expression matching (although the current lexer implementation seems hand-rolled, the dependency is present).
+### Planned
+- **Parser**: Recursive descent for expressions/statements.
+- **Semantic Checks**: Type inference, scope resolution.
+- **Optimizations**: Constant folding, dead code elimination.
 
-## Getting Started
+## Technologies Used 🛠️
+
+- **Rust**: Leveraging Rust's performance and safety for compiler implementation.
+- **Cargo**: Rust's build system and package manager.
+- **Regex Crate**: For pattern matching (with hand-written fallback).
+
+## Project Structure 📂
+
+
+D-Compiler/
+├── src/
+│   ├── main.rs               → Entry point (demo lexer)
+│   ├── lexer/
+│   │   ├── mod.rs            → Lexer module exports
+│   │   ├── lexer.rs          → Core lexer implementation
+│   │   ├── token.rs          → Token definitions
+│   │   └── tests.rs          → Unit tests
+│   └── tests/                → Integration tests
+├── Cargo.toml                → Project manifest
+├── Cargo.lock                → Dependency resolution
+└── plan.txt                  → Roadmap
+
+
+## Lexer Workflow 🔄
+
+mermaid
+graph LR
+  A[Source Code] --> B((Lexer))
+  B --> C[Token Stream]
+  C --> D{{Parser}} --> E[AST]
+  E --> F[Semantic Analysis] --> G[Code Generation]
+
+
+## Getting Started 🏁
 
 ### Prerequisites
+- Rust 1.70+ ([install via rustup](https://rustup.rs/))
 
-- Rust and Cargo installed on your system. You can install them from [rustup.rs](https://rustup.rs/).
-
-### Building the Project
-
-Navigate to the project's root directory (`D-Compiler`) in your terminal and run:
-
-```bash
-cargo build
-```
-
-This will compile the project and its dependencies.
-
-### Running the Lexer
-
-The main program currently demonstrates the lexer by tokenizing a sample C-like code snippet. To run it, use:
-
-```bash
+### Commands
+bash
+# Build and run
 cargo run
-```
 
-### Running Tests
-
-The project includes unit tests for the lexer. To run them, use:
-
-```bash
+# Run tests
 cargo test
-```
 
-## Project Plan
+# Generate docs
+cargo doc --open
 
-Based on the `plan.txt` file, the initial step for the project is to:
 
-1.  Establish a list of keywords, reserved words, operations, and punctuations (Already largely implemented in the lexer).
+## Example Output 📝
+rust
+Input: "let x = 42 + (y * 3);"
+Tokens:
+  Line 1 Col 1  | Reserved(let)  | "let"
+  Line 1 Col 5  | Identifier(x)  | "x"
+  Line 1 Col 7  | Operation(=)   | "="
+  Line 1 Col 9  | Number(42)     | "42"
+  Line 1 Col 12 | Operation(+)   | "+"
+  Line 1 Col 14 | Punctuation(() | "("
+  Line 1 Col 15 | Identifier(y)  | "y"
+  Line 1 Col 17 | Operation(*)   | "*"
+  Line 1 Col 19 | Number(3)      | "3"
+  Line 1 Col 20 | Punctuation()) | ")"
+  Line 1 Col 21 | Punctuation(;) | ";"
 
-Following the initial step, the project plan includes these further stages:
 
-2.  **Parsing:** Developing a parser to build an Abstract Syntax Tree (AST). This is planned for a later stage of development.
-3.  **Semantic Analysis:** Implementing checks for type correctness, variable scope, etc.
-4.  **Intermediate Code Generation:** Translating the AST into an intermediate representation.
-5.  **Code Optimization:** Applying optimizations to the intermediate code.
-6.  **Backend Code Generation:** Generating target machine code or assembly from the optimized intermediate code.
+## License 📜
+Apache 2.0 - See [LICENSE](LICENSE)
 
-Further details on the initial planning can be found in `plan.txt`.
+## Contributing 🤝
+1. Fork the repository
+2. Create a feature branch
+3. Add tests for new functionality
+4. Submit a PR with clear documentation
 
-## License
-
-This project is licensed under the Apache License, Version 2.0. See the [LICENSE](D-Compiler/LICENSE) file for details.
+---
+**Happy Compiling!** 🔧
