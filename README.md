@@ -1,6 +1,3 @@
-Here's the markdown block for your D-Compiler documentation:
-
-```markdown
 # D-Compiler 🚀
 
 ![Compiler Pipeline](https://via.placeholder.com/800x400.png?text=D-Compiler+Architecture)
