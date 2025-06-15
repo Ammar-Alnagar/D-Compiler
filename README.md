@@ -1,6 +1,6 @@
 # D-Compiler 🚀
 
-![Compiler Pipeline](https://en.wikipedia.org/wiki/Compiler)
+![Compiler Pipeline]([https://en.wikipedia.org/wiki/Compiler](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Compiler.svg/800px-Compiler.svg.png))
 
 ## 🚦 Project Status
 | Component          | Status      | Features Implemented |
