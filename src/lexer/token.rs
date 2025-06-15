@@ -33,6 +33,8 @@ pub enum Operation {
     GreaterEqual, // >=
     LessEqual,    // <=
     Not,          // !
+    Modulo,       // %
+    Remainder,    // %%
 }
 
 #[derive(Debug, Clone, PartialEq)]

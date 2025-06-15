@@ -97,6 +97,14 @@ impl Lexer {
             '+' => Token::Operation(Operation::Add),
             '-' => Token::Operation(Operation::Subtract),
             '*' => Token::Operation(Operation::Multiply),
+            '%' => {
+                if self.peek() == '%' {
+                    self.advance();
+                    Token::Operation(Operation::Remainder)
+                } else {
+                    Token::Operation(Operation::Modulo)
+                }
+            }
 
             // Handle division and comments
             '/' => {
