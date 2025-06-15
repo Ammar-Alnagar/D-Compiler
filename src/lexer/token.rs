@@ -1,3 +1,4 @@
+#[allow(dead_code, unused_variables)]
 #[derive(Debug, Clone, PartialEq)]
 pub enum Punctuation {
     OpenParen = 0,     // (
@@ -11,6 +12,7 @@ pub enum Punctuation {
     Dot = 8,           // .
     Colon = 9,         // :
     QuestionMark = 10, // ?
+    Comment = 11,      // //
 }
 
 #[derive(Debug, Clone, PartialEq)]
@@ -48,6 +50,22 @@ pub enum Reserved {
     Print,
     True,
     False,
+    Define,
+    Macro,
+    Struct,
+    Enum,
+    Union,
+    Type,
+    Trait,
+    Impl,
+    Module,
+    Use,
+    Import,
+    Export,
+    EnumVariant,
+    StructField,
+    TypeAlias,
+    TypeDef,
 }
 
 #[derive(Debug, Clone, PartialEq)]
@@ -73,6 +91,13 @@ pub struct TokenInfo {
     pub line: usize,
     #[allow(dead_code)]
     pub column: usize,
+}
+
+#[derive(Debug, Clone)]
+pub enum TokenError {
+    UnexpectedToken(Token),
+    UnexpectedCharacter(char),
+    UnexpectedEndOfFile,
 }
 
 impl TokenInfo {

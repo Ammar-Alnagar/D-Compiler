@@ -97,7 +97,16 @@ impl Lexer {
             '+' => Token::Operation(Operation::Add),
             '-' => Token::Operation(Operation::Subtract),
             '*' => Token::Operation(Operation::Multiply),
-            '/' => Token::Operation(Operation::Divide),
+
+            // Handle division and comments
+            '/' => {
+                if self.peek() == '/' {
+                    self.advance();
+                    Token::Punctuation(Punctuation::Comment)
+                } else {
+                    Token::Operation(Operation::Divide)
+                }
+            }
 
             // Punctuation
             '(' => Token::Punctuation(Punctuation::OpenParen),
@@ -201,8 +210,8 @@ impl Lexer {
 
         // Check for reserved keywords
         let reserved = match text.as_str() {
-            "null" => Some(Reserved::Null),
-            "void" => Some(Reserved::Void),
+            "Null" | "null" => Some(Reserved::Null),
+            "Void" | "void" => Some(Reserved::Void),
             "let" => Some(Reserved::Let),
             "fn" => Some(Reserved::Fn),
             "if" => Some(Reserved::If),
@@ -211,13 +220,27 @@ impl Lexer {
             "for" => Some(Reserved::For),
             "continue" => Some(Reserved::Continue),
             "break" => Some(Reserved::Break),
-            "return" => Some(Reserved::Return),
+            "Return" | "return" => Some(Reserved::Return),
             "public" => Some(Reserved::Public),
             "private" => Some(Reserved::Private),
             "static" => Some(Reserved::Static),
-            "print" => Some(Reserved::Print),
-            "true" => Some(Reserved::True),
-            "false" => Some(Reserved::False),
+            "Print" | "print" => Some(Reserved::Print),
+            "True" | "true" => Some(Reserved::True),
+            "False" | "false" => Some(Reserved::False),
+            "Type" | "type" => Some(Reserved::Type),
+            "Alias" | "alias" => Some(Reserved::TypeAlias),
+            "Def" | "def" => Some(Reserved::TypeDef),
+            "Struct" | "struct" => Some(Reserved::Struct),
+            "Enum" | "enum" => Some(Reserved::Enum),
+            "Impl" | "impl" => Some(Reserved::Impl),
+            "Trait" | "trait" => Some(Reserved::Trait),
+            "Use" | "use" => Some(Reserved::Use),
+            "Union" | "union" => Some(Reserved::Union),
+            "Impl" | "impl" => Some(Reserved::Impl),
+            "import" => Some(Reserved::Import),
+            "export" => Some(Reserved::Export),
+            "define" | "Define" => Some(Reserved::Define),
+
             _ => None,
         };
 
