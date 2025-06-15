@@ -1,6 +1,6 @@
 # D-Compiler 🚀
 
-![Compiler Pipeline]([https://en.wikipedia.org/wiki/Compiler])
+![Compiler Pipeline](https://en.wikipedia.org/wiki/Compiler)
 
 ## 🚦 Project Status
 | Component          | Status      | Features Implemented |
